@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Каталог брендів — Офіційне джерело</title>
+  <meta name="description" content="Каталог перевірених офіційних сайтів брендів із пошуком і фільтрами.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body data-page="catalog">
+  <div data-header></div>
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Хлібні крихти"><a href="index.html">Головна</a><span>/</span><span>Каталог</span></nav>
+        <div class="page-intro"><p class="eyebrow">База джерел</p><h1>Каталог брендів</h1><p>Шукайте за назвою, категорією, країною або типом офіційного джерела.</p></div>
+        <div class="demo-note">У демонстраційній версії наведено приклади записів. Перед публічним запуском їх потрібно повторно перевірити.</div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container catalog-layout">
+        <aside class="filters" aria-label="Фільтри каталогу">
+          <h2>Фільтри</h2>
+          <div class="filter-group"><label for="catalog-search">Пошук</label><input id="catalog-search" type="search" placeholder="Назва або домен"></div>
+          <div class="filter-group"><label for="filter-category">Категорія</label><select id="filter-category"><option value="">Усі категорії</option></select></div>
+          <div class="filter-group"><label for="filter-country">Країна бренду</label><select id="filter-country"><option value="">Усі країни</option></select></div>
+          <div class="filter-group"><label for="filter-type">Тип джерела</label><select id="filter-type"><option value="">Усі типи</option></select></div>
+          <div class="filter-group"><label for="filter-status">Статус</label><select id="filter-status"><option value="">Усі статуси</option><option value="verified">Перевірено</option><option value="review">Повторна перевірка</option><option value="unconfirmed">Не підтверджено</option></select></div>
+          <button class="clear-filters" id="clear-filters" type="button">Очистити фільтри</button>
+        </aside>
+        <div>
+          <div class="catalog-toolbar"><strong id="results-count">0 брендів</strong><label>Сортування <select id="filter-sort"><option value="recent">Нещодавно перевірені</option><option value="name">За назвою</option><option value="country">За країною</option></select></label></div>
+          <div class="brand-grid catalog-grid" id="catalog-grid"></div>
+          <div class="empty-state hidden" id="catalog-empty"><h2>Нічого не знайдено</h2><p>Спробуйте змінити запит або очистити один із фільтрів.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div data-footer></div>
+  <button class="back-top" id="back-top" type="button" aria-label="Повернутися нагору">↑</button>
+</body>
+</html>

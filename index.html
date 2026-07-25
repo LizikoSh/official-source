@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Офіційне джерело — каталог справжніх сайтів брендів</title>
+  <meta name="description" content="Знаходьте перевірені офіційні сайти виробників, каталоги, представництва та дистриб’юторів.">
+  <meta name="theme-color" content="#081b33">
+  <meta property="og:title" content="Офіційне джерело">
+  <meta property="og:description" content="Каталог перевірених сайтів виробників, офіційних каталогів і представництв.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body data-page="home">
+  <div data-header></div>
+  <main id="main">
+    <div class="container hero-shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="kicker">Перевірені цифрові джерела</p>
+          <h1 id="hero-title">Знайдіть справжній сайт бренду</h1>
+          <p class="hero-lead">Перевірені сайти виробників, офіційні каталоги, регіональні представництва та дистриб’ютори — в одному місці.</p>
+          <form class="hero-search" id="hero-search" role="search">
+            <label class="search-input-wrap">
+              <span class="sr-only">Назва бренду, категорія або країна</span>
+              <input type="search" name="q" placeholder="Назва бренду, категорія або країна" autocomplete="off">
+            </label>
+            <button type="submit">Знайти бренд</button>
+          </form>
+          <div class="trust-row" aria-label="Переваги каталогу">
+            <span>Перевірено вручну</span>
+            <span>Видимий тип джерела</span>
+            <span>Зафіксована дата перевірки</span>
+          </div>
+        </div>
+
+        <aside class="verification-card" aria-label="Приклад перевіреного джерела">
+          <div class="verified-heading">
+            <span class="verified-check" aria-hidden="true">✓</span>
+            <div>
+              <strong>Офіційний сайт підтверджено</strong>
+              <span>Домен належить виробнику</span>
+            </div>
+          </div>
+          <div class="verified-domain">
+            <p>Приклад джерела</p>
+            <a href="brand.html">garmin.com</a>
+          </div>
+          <div class="verified-tags">
+            <span class="tag tag-lime">Сайт виробника</span>
+            <span class="tag">США</span>
+          </div>
+          <p class="checked-date">Перевірено 25.07.2026</p>
+        </aside>
+      </section>
+
+      <div class="stats-strip" aria-label="Статистика каталогу">
+        <div class="stat"><strong>1 240</strong><span>брендів у плані каталогу</span></div>
+        <div class="stat"><strong>48</strong><span>країн</span></div>
+        <div class="stat"><strong>86</strong><span>категорій</span></div>
+        <div class="stat"><strong>93</strong><span>оновлення цього місяця</span></div>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Актуальні записи</p>
+            <h2>Нещодавно перевірені бренди</h2>
+            <p>У картці одразу видно тип джерела, країну бренду та дату останньої перевірки.</p>
+          </div>
+          <a class="section-link" href="catalog.html">Переглянути весь каталог →</a>
+        </div>
+        <div class="brand-grid" id="recent-brands"></div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Швидкий вибір</p>
+            <h2>Категорії брендів</h2>
+            <p>Почніть із напряму, який вас цікавить.</p>
+          </div>
+          <a class="section-link" href="categories.html">Усі категорії →</a>
+        </div>
+        <div class="category-grid">
+          <button class="category-card" type="button" data-category-link="Косметика">
+            <span class="category-icon">КО</span><span><h3>Косметика</h3><p>Догляд, професійні бренди</p></span><span class="category-arrow">→</span>
+          </button>
+          <button class="category-card" type="button" data-category-link="Електроніка">
+            <span class="category-icon">EL</span><span><h3>Електроніка</h3><p>Гаджети, навігація, техніка</p></span><span class="category-arrow">→</span>
+          </button>
+          <button class="category-card" type="button" data-category-link="Побутова техніка">
+            <span class="category-icon">ПТ</span><span><h3>Побутова техніка</h3><p>Дім, клімат, прибирання</p></span><span class="category-arrow">→</span>
+          </button>
+          <button class="category-card" type="button" data-category-link="Одяг і взуття">
+            <span class="category-icon">ОД</span><span><h3>Одяг і взуття</h3><p>Спортивні та lifestyle-бренди</p></span><span class="category-arrow">→</span>
+          </button>
+          <button class="category-card" type="button" data-category-link="Товари для дому">
+            <span class="category-icon">ДІ</span><span><h3>Товари для дому</h3><p>Меблі, декор, побут</p></span><span class="category-arrow">→</span>
+          </button>
+          <button class="category-card" type="button" data-category-link="Спорт і туризм">
+            <span class="category-icon">ST</span><span><h3>Спорт і туризм</h3><p>Спорядження та активний відпочинок</p></span><span class="category-arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" style="color:var(--lime)">Методика</p>
+            <h2 style="color:#fff">Як ми перевіряємо джерело</h2>
+            <p style="color:#aebdd0">Для кожного посилання фіксуємо не лише адресу, а й підставу для визначення його статусу.</p>
+          </div>
+          <a class="section-link" style="color:var(--lime)" href="verify.html">Докладна методика →</a>
+        </div>
+        <div class="steps">
+          <article class="step"><h3>Знаходимо домен</h3><p>Шукаємо головний сайт бренду та пов’язані регіональні версії.</p></article>
+          <article class="step"><h3>Зіставляємо дані</h3><p>Перевіряємо реквізити, офіційні профілі та згадки виробника.</p></article>
+          <article class="step"><h3>Визначаємо тип</h3><p>Розрізняємо виробника, представництво, імпортера і продавця.</p></article>
+          <article class="step"><h3>Фіксуємо дату</h3><p>Записуємо результат і плануємо повторну перевірку.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Корисний довідник</p>
+            <h2>Перевіряйте впевненіше</h2>
+            <p>Короткі пояснення для покупців, контент-менеджерів і бізнесу.</p>
+          </div>
+        </div>
+        <div class="guide-grid">
+          <article class="guide-feature">
+            <p class="eyebrow">Основний матеріал</p>
+            <h3>Виробник, імпортер і дистриб’ютор: у чому різниця?</h3>
+            <p>Одна компанія створює товар, інша ввозить його в країну, а третя продає. Пояснюємо, як не переплутати їхні ролі.</p>
+            <a href="verify.html#roles">Читати пояснення →</a>
+          </article>
+          <div class="guide-list">
+            <article><h3>Як розпізнати сайт-клон</h3><p>Домен, контакти, юридичні дані, сертифікат і зв’язок з офіційними профілями.</p></article>
+            <article><h3>Чому бренд має кілька сайтів</h3><p>Глобальні, регіональні й локальні версії можуть мати різних операторів.</p></article>
+            <article><h3>Що означає «офіційний продавець»</h3><p>Яке підтвердження має бути та чому напису на самому сайті недостатньо.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container cta-panel">
+        <div><p class="eyebrow">Спільний каталог</p><h2>Не знайшли потрібний бренд?</h2><p>Запропонуйте сайт, каталог або представництво. Запис з’явиться лише після редакційної перевірки.</p></div>
+        <a class="btn btn-dark" href="submit.html">Додати бренд →</a>
+      </div>
+    </section>
+  </main>
+  <div data-footer></div>
+  <button class="back-top" id="back-top" type="button" aria-label="Повернутися нагору">↑</button>
+</body>
+</html>
