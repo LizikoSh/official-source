@@ -679,6 +679,14 @@ h3 {
   background: #c8ff83;
 }
 
+body[data-page="404"] .site-header {
+  position: absolute;
+  inset: 0 0 auto;
+  background: rgba(255, 255, 255, 0.72);
+  border-bottom-color: rgba(217, 225, 232, 0.45);
+  box-shadow: none;
+}
+
 body[data-page="404"] .site-footer {
   padding: 26px 0 14px;
 }
