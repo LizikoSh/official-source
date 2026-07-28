@@ -2196,3 +2196,27 @@ button.country-card {
     animation-iteration-count: 1 !important;
   }
 }
+
+
+
+
+
+
+@media (max-width: 620px) {
+  /* ваші наявні правила */
+
+  .error-404::after {
+    background:
+      linear-gradient(
+        rgba(6, 23, 44, 0.03),
+        rgba(6, 23, 44, 0.03)
+      ),
+      linear-gradient(
+        90deg,
+        rgba(6, 23, 44, 0.045) 0%,
+        rgba(6, 23, 44, 0.095) 30%,
+        rgba(6, 23, 44, 0.205) 52%,
+        rgba(6, 23, 44, 0.25) 78%
+      );
+  }
+}
