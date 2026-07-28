@@ -635,12 +635,28 @@ h3 {
   background: var(--surface-alt);
 }
 
+body[data-page="404"] {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--navy-950);
+}
+
+body[data-page="404"] #main {
+  flex: 0 0 auto;
+}
+
+body[data-page="404"] [data-footer] {
+  margin-top: auto;
+  background: var(--navy-950);
+}
+
 .error-404 {
   position: relative;
-  min-height: clamp(390px, calc(100vh - 250px), 500px);
+  min-height: clamp(360px, calc(100vh - 285px), 460px);
   display: grid;
   place-items: center;
-  padding: clamp(28px, 4vw, 46px) 0;
+  padding: clamp(24px, 3vw, 38px) 0;
   overflow: hidden;
   color: #fff;
   background-color: var(--navy-950);
@@ -651,11 +667,11 @@ h3 {
   background-position:
     center,
     center,
-    left top;
+    left bottom;
   background-size:
     cover,
     cover,
-    auto 100%;
+    auto calc(100% - 88px);
   background-repeat: no-repeat;
 }
 
@@ -696,7 +712,7 @@ body[data-page="404"] .site-header {
 }
 
 body[data-page="404"] .site-footer {
-  padding: 26px 0 14px;
+  padding: 18px 0 8px;
 }
 
 body[data-page="404"] .site-footer .brand {
@@ -715,29 +731,29 @@ body[data-page="404"] .site-footer .brand-shield span {
 
 body[data-page="404"] .footer-grid {
   align-items: start;
-  gap: 24px;
+  gap: 18px;
 }
 
 body[data-page="404"] .footer-about {
-  margin: 10px 0 0;
-  font-size: 13px;
-  line-height: 1.45;
-}
-
-body[data-page="404"] .footer-grid h2 {
-  margin-bottom: 8px;
-  font-size: 14px;
-}
-
-body[data-page="404"] .footer-grid a {
-  margin: 4px 0;
-  font-size: 13px;
+  margin: 6px 0 0;
+  font-size: 12px;
   line-height: 1.4;
 }
 
+body[data-page="404"] .footer-grid h2 {
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+body[data-page="404"] .footer-grid a {
+  margin: 2px 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
 body[data-page="404"] .footer-bottom {
-  margin-top: 18px;
-  padding-top: 10px;
+  margin-top: 10px;
+  padding-top: 8px;
   font-size: 11px;
 }
 
