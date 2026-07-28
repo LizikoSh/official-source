@@ -1032,7 +1032,7 @@ button.category-card {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 0.7fr 0.8fr 1fr;
+  grid-template-columns: 1.5fr 0.7fr 0.8fr;
   gap: 44px;
 }
 
@@ -1703,7 +1703,7 @@ button.country-card {
   }
 
   .footer-grid {
-    grid-template-columns: 1.4fr repeat(3, 1fr);
+    grid-template-columns: 1.4fr repeat(2, 1fr);
     gap: 28px;
   }
 }
