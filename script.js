@@ -16,7 +16,10 @@
         <div class="container header-inner">
           <a class="brand" href="index.html" aria-label="Офіційне джерело — на головну">
             <span class="brand-shield" aria-hidden="true"><span>✓</span></span>
-            <span>Офіційне джерело</span>
+            <span class="brand-copy">
+              <span class="brand-title">Офіційне джерело</span>
+              <span class="brand-subtitle">Офіційні сайти світових брендів</span>
+            </span>
           </a>
           <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
             <span class="sr-only">Відкрити меню</span>
@@ -219,6 +222,26 @@
       submitForm.reportValidity();
       return;
     }
+    const formData = new FormData(submitForm);
+    const line = (label, value) => value ? `${label}: ${value}` : "";
+    const message = [
+      "Заявка з сайту «Офіційне джерело»",
+      line("Тип звернення", formData.get("type")),
+      line("Бренд", formData.get("brand")),
+      line("Посилання", formData.get("url")),
+      line("Країна або регіон", formData.get("country")),
+      line("Тип джерела", formData.get("role")),
+      line("Пояснення", formData.get("evidence")),
+      line("Ім’я", formData.get("name")),
+      line("Email", formData.get("email")),
+      `Представляє бренд: ${formData.get("representative") ? "так" : "ні"}`
+    ].filter(Boolean).join("\n");
+    const telegramLink = document.querySelector("#telegram-submit-link");
+    const messagePreview = document.querySelector("#telegram-message-preview");
+    if (messagePreview) messagePreview.value = message;
+    if (telegramLink) telegramLink.href = "https://t.me/Lizikova";
+    navigator.clipboard?.writeText(message).catch(() => {});
+    window.open("https://t.me/Lizikova", "_blank", "noopener");
     submitForm.classList.add("hidden");
     document.querySelector("#form-success")?.classList.remove("hidden");
     document.querySelector("#form-success")?.focus();

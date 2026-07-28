@@ -80,7 +80,7 @@ select {
 }
 
 .container {
-  width: min(calc(100% - 40px), var(--container));
+  width: min(calc(100% - 48px), var(--container));
   margin-inline: auto;
 }
 
@@ -140,6 +140,27 @@ select {
   font-weight: 800;
   letter-spacing: -0.03em;
   white-space: nowrap;
+}
+
+.brand-copy {
+  display: grid;
+  gap: 2px;
+  line-height: 1.1;
+}
+
+.brand-title,
+.brand-subtitle {
+  display: block;
+}
+
+.brand-subtitle {
+  color: var(--muted);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.25;
+  white-space: normal;
 }
 
 .brand-shield {
@@ -608,6 +629,31 @@ h3 {
 
 .section-alt {
   background: var(--surface-alt);
+}
+
+.home-surface {
+  background: var(--surface-alt);
+}
+
+.home-surface > section {
+  position: relative;
+}
+
+.home-surface > .section:not(.section-dark),
+.home-surface > .section-tight {
+  background: var(--surface-alt);
+}
+
+.home-surface > section + section::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 50%;
+  width: min(calc(100% - 48px), var(--container));
+  height: 2px;
+  background: var(--lime);
+  transform: translateX(-50%);
 }
 
 .section-dark {
@@ -1582,6 +1628,18 @@ button.country-card {
   color: var(--muted);
 }
 
+.telegram-preview {
+  width: 100%;
+  min-height: 168px;
+  margin: 18px 0 22px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--ink);
+  background: var(--surface-alt);
+  resize: vertical;
+}
+
 .about-values {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1678,7 +1736,7 @@ button.country-card {
 
 @media (max-width: 860px) {
   .container {
-    width: min(calc(100% - 32px), var(--container));
+    width: min(calc(100% - 40px), var(--container));
   }
 
   .header-inner {
@@ -1801,11 +1859,22 @@ button.country-card {
 
 @media (max-width: 620px) {
   .container {
-    width: min(calc(100% - 24px), var(--container));
+    width: min(calc(100% - 36px), var(--container));
   }
 
   .brand {
+    gap: 10px;
     font-size: 18px;
+    white-space: normal;
+  }
+
+  .brand-subtitle {
+    max-width: 180px;
+    font-size: 10.5px;
+  }
+
+  .header-inner {
+    gap: 14px;
   }
 
   .brand-shield {
@@ -1822,9 +1891,15 @@ button.country-card {
     font-size: clamp(39px, 13vw, 56px);
   }
 
+  .kicker::before {
+    display: none;
+  }
+
   .hero-search {
     grid-template-columns: 1fr;
     gap: 5px;
+    margin-bottom: 14px;
+    transform: translateY(-10px);
   }
 
   .hero-search button {
@@ -1924,6 +1999,15 @@ button.country-card {
   .facts-grid,
   .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .form-actions .btn {
+    width: 100%;
   }
 
   .source-card {

@@ -16,7 +16,7 @@
     <section class="section section-alt">
       <div class="container">
         <div class="form-shell">
-          <form id="submit-brand-form">
+          <form id="submit-brand-form" action="https://t.me/Lizikova" target="_blank">
             <div class="form-grid">
               <div class="form-field"><label for="request-type">Тип звернення *</label><select id="request-type" name="type" required><option value="">Оберіть</option><option>Новий бренд</option><option>Офіційний сайт</option><option>Каталог або документація</option><option>Представництво чи дистриб’ютор</option><option>Повідомлення про помилку</option></select></div>
               <div class="form-field"><label for="brand-name">Назва бренду *</label><input id="brand-name" name="brand" required autocomplete="organization"></div>
@@ -28,9 +28,9 @@
               <div class="form-field"><label for="sender-email">Email *</label><input id="sender-email" name="email" type="email" required autocomplete="email"></div>
               <div class="form-field full"><label><input type="checkbox" name="representative" style="width:auto;min-height:auto"> Я представляю цей бренд або компанію</label></div>
             </div>
-            <div class="form-actions"><p>У статичній демонстраційній версії форма показує сценарій надсилання, але не передає дані на сервер.</p><button class="btn btn-dark" type="submit">Надіслати на перевірку</button></div>
+            <div class="form-actions"><p>Після надсилання відкриється Telegram @Lizikova. Текст заявки буде підготовлено для копіювання.</p><button class="btn btn-dark" type="submit">Надіслати на перевірку</button></div>
           </form>
-          <div class="success-panel hidden" id="form-success" tabindex="-1"><span class="source-check" aria-hidden="true">✓</span><h2>Заявку підготовлено</h2><p>У робочій версії сайту тут відбудеться надсилання до редакційної черги.</p><a class="btn btn-secondary" href="catalog.html">Повернутися до каталогу</a></div>
+          <div class="success-panel hidden" id="form-success" tabindex="-1"><span class="source-check" aria-hidden="true">✓</span><h2>Заявку підготовлено</h2><p>Надішліть цей текст у Telegram @Lizikova. Якщо браузер дозволив, він уже скопійований у буфер обміну.</p><textarea class="telegram-preview" id="telegram-message-preview" readonly aria-label="Текст заявки для Telegram"></textarea><a class="btn btn-secondary" id="telegram-submit-link" href="https://t.me/Lizikova" target="_blank" rel="noopener">Відкрити Telegram</a></div>
         </div>
       </div>
     </section>
