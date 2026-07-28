@@ -60,7 +60,7 @@
           </div>
           <div>
             <h2>Важливо</h2>
-            <p>Дані в цій версії демонстраційні. Перед публічним запуском кожен запис потрібно перевірити редакційно.</p>
+            <p>Дані завантажено з робочої таблиці. Перед публічним запуском кожен запис варто повторно перевірити редакційно.</p>
           </div>
         </div>
         <div class="container footer-bottom">
@@ -97,29 +97,94 @@
     return { label: "Не підтверджено", className: "unconfirmed" };
   }
 
+  function escapeHtml(value) {
+    return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      "\"": "&quot;",
+      "'": "&#39;"
+    }[char]));
+  }
+
+  function countBy(items, key) {
+    return items.reduce((counts, item) => {
+      const value = item[key] || "Інше";
+      counts.set(value, (counts.get(value) || 0) + 1);
+      return counts;
+    }, new Map());
+  }
+
+  function brandCountText(count) {
+    const lastDigit = count % 10;
+    const lastTwo = count % 100;
+    const word = lastDigit === 1 && lastTwo !== 11
+      ? "бренд"
+      : lastDigit >= 2 && lastDigit <= 4 && (lastTwo < 12 || lastTwo > 14)
+        ? "бренди"
+        : "брендів";
+    return `${count} ${word}`;
+  }
+
+  function markerFromText(value) {
+    const words = String(value)
+      .replace(/[()]/g, " ")
+      .split(/[\s/–—-]+/)
+      .filter(Boolean);
+    return words.slice(0, 2).map((word) => word[0]).join("").toLocaleUpperCase("uk") || "•";
+  }
+
   function brandCard(brand) {
     const status = statusMeta(brand.status);
-    const href = brand.id === "garmin" ? "brand.html" : `brand.html?id=${encodeURIComponent(brand.id)}`;
+    const href = `brand.html?id=${encodeURIComponent(brand.id)}`;
     return `
-      <article class="brand-card" data-category="${brand.category}" data-country="${brand.country}">
+      <article class="brand-card" data-category="${escapeHtml(brand.category)}" data-country="${escapeHtml(brand.country)}">
         <div class="brand-card-top">
-          <span class="brand-avatar" aria-hidden="true">${brand.initials}</span>
+          <span class="brand-avatar" aria-hidden="true">${escapeHtml(brand.initials)}</span>
           <span class="status-badge ${status.className}"><span>✓</span>${status.label}</span>
         </div>
         <div>
-          <p class="eyebrow">${brand.category}</p>
-          <h3><a href="${href}">${brand.name}</a></h3>
-          <p class="brand-domain">${brand.site}</p>
+          <p class="eyebrow">${escapeHtml(brand.category)}</p>
+          <h3><a href="${href}">${escapeHtml(brand.name)}</a></h3>
+          <p class="brand-domain">${escapeHtml(brand.site)}</p>
         </div>
         <div class="brand-meta">
-          <span>${brand.countryCode} · ${brand.country}</span>
-          <span>${brand.type}</span>
+          <span>${escapeHtml([brand.countryCode, brand.country].filter(Boolean).join(" · "))}</span>
+          <span>${escapeHtml(brand.type)}</span>
         </div>
         <div class="card-footer">
-          <span>Перевірено ${brand.checked}</span>
-          <a href="${href}" aria-label="Переглянути запис ${brand.name}">Переглянути <span aria-hidden="true">→</span></a>
+          <span>Перевірено ${escapeHtml(brand.checked)}</span>
+          <a href="${href}" aria-label="Переглянути запис ${escapeHtml(brand.name)}">Переглянути <span aria-hidden="true">→</span></a>
         </div>
       </article>`;
+  }
+
+  function renderCategoryGrid(target, limit) {
+    if (!target || !window.BRAND_DATA) return;
+    const categories = [...countBy(window.BRAND_DATA, "category")]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "uk"))
+      .slice(0, limit || Infinity);
+    target.innerHTML = categories.map(([category, count]) => `
+      <button class="category-card" type="button" data-category-link="${escapeHtml(category)}">
+        <span class="category-icon">${escapeHtml(markerFromText(category))}</span>
+        <span><h3>${escapeHtml(category)}</h3><p>${brandCountText(count)} у каталозі</p></span>
+        <span class="category-arrow">→</span>
+      </button>
+    `).join("");
+  }
+
+  function renderCountryGrid(target) {
+    if (!target || !window.BRAND_DATA) return;
+    const countries = [...countBy(window.BRAND_DATA, "country")]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "uk"));
+    const codeByCountry = new Map(window.BRAND_DATA.map((brand) => [brand.country, brand.countryCode || markerFromText(brand.country)]));
+    target.innerHTML = countries.map(([country, count]) => `
+      <button class="country-card" type="button" data-country-link="${escapeHtml(country)}">
+        <span class="country-code">${escapeHtml(codeByCountry.get(country) || markerFromText(country))}</span>
+        <h2>${escapeHtml(country)}</h2>
+        <p>${brandCountText(count)} у каталозі</p>
+      </button>
+    `).join("");
   }
 
   const heroForm = document.querySelector("#hero-search");
@@ -133,6 +198,10 @@
   if (recentGrid && window.BRAND_DATA) {
     recentGrid.innerHTML = window.BRAND_DATA.slice(0, 4).map(brandCard).join("");
   }
+
+  renderCategoryGrid(document.querySelector("#home-category-grid"), 6);
+  renderCategoryGrid(document.querySelector("#category-list"));
+  renderCountryGrid(document.querySelector("#country-list"));
 
   const catalogGrid = document.querySelector("#catalog-grid");
   if (catalogGrid && window.BRAND_DATA) {
@@ -248,31 +317,37 @@
   });
 
   const reportButton = document.querySelector("#report-error");
-  reportButton?.addEventListener("click", () => {
-    window.location.href = "submit.html?type=error&brand=Garmin";
+  reportButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const brandName = document.querySelector("#brand-profile-name")?.textContent.trim() || "";
+    window.location.href = `submit.html?type=error${brandName ? `&brand=${encodeURIComponent(brandName)}` : ""}`;
   });
 
   if (document.querySelector("#brand-profile-name") && window.BRAND_DATA) {
-    const brandId = new URLSearchParams(window.location.search).get("id") || "garmin";
+    const brandId = new URLSearchParams(window.location.search).get("id") || window.BRAND_DATA[0]?.id || "apple";
     const brand = window.BRAND_DATA.find((item) => item.id === brandId);
     if (brand) {
       document.title = `${brand.name}: офіційний сайт і країна — Офіційне джерело`;
       document.querySelector("#brand-profile-logo").textContent = brand.initials;
       document.querySelector("#brand-profile-name").textContent = brand.name;
+      document.querySelector("#brand-breadcrumb-name").textContent = brand.name;
       document.querySelector("#brand-profile-category").textContent = brand.category;
       document.querySelector("#brand-profile-description").textContent = brand.note;
       document.querySelector("#brand-profile-country").textContent = brand.country;
+      document.querySelector("#brand-profile-year").textContent = brand.year || "Не вказано";
+      document.querySelector("#brand-profile-type").textContent = brand.type;
       document.querySelector("#brand-source-domain").textContent = brand.site;
       document.querySelector("#brand-source-type").textContent = `${brand.type} · ${brand.country}`;
+      const status = statusMeta(brand.status);
+      document.querySelector("#brand-profile-status").textContent = status.label;
+      const statusPanel = document.querySelector(".brand-status-panel");
+      if (statusPanel) statusPanel.innerHTML = `<strong>${status.className === "verified" ? "✓ " : ""}${status.label}</strong>Перевірено ${escapeHtml(brand.checked)}`;
       const sourceLink = document.querySelector("#brand-source-link");
       sourceLink.href = brand.url;
       if (brand.url === "#") {
         sourceLink.classList.add("hidden");
       }
-      if (brand.id !== "garmin") {
-        document.querySelectorAll("[data-example-garmin]").forEach((element) => element.classList.add("hidden"));
-        document.querySelector("#brand-source-reason").innerHTML = `<strong>Статус запису</strong>${brand.note} Детальна редакційна картка для цього бренду ще готується.`;
-      }
+      document.querySelector("#brand-source-reason").innerHTML = `<strong>Статус запису</strong>${escapeHtml(brand.note)}`;
     }
   }
 
