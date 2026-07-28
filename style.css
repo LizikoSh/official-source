@@ -15,6 +15,7 @@
   --line: #d9e1e8;
   --surface: #ffffff;
   --surface-alt: #e8edf2;
+  --surface-page: #f0f3f6;
   --warm: #f7f6f1;
   --warning: #9a6300;
   --warning-bg: #fff5d6;
@@ -632,6 +633,17 @@ h3 {
 
 .section-alt {
   background: var(--surface-alt);
+}
+
+body[data-page="catalog"] #main,
+body[data-page="categories"] #main,
+body[data-page="countries"] #main,
+body[data-page="catalog"] .section,
+body[data-page="categories"] .section,
+body[data-page="countries"] .section,
+body[data-page="categories"] .section-tight,
+body[data-page="countries"] .section-alt {
+  background: var(--surface-page);
 }
 
 body[data-page="404"] {
