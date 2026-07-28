@@ -645,15 +645,23 @@ h3 {
   color: #fff;
   background-color: var(--navy-950);
   background-image:
-    linear-gradient(rgba(6, 23, 44, 0.76), rgba(6, 23, 44, 0.76)),
+    linear-gradient(90deg, rgba(6, 23, 44, 0.56) 0%, rgba(6, 23, 44, 0.58) 38%, rgba(6, 23, 44, 0.9) 72%, var(--navy-950) 100%),
+    linear-gradient(rgba(6, 23, 44, 0.18), rgba(6, 23, 44, 0.18)),
     url("images/official-source-404.webp");
   background-position:
     center,
-    center top;
+    center,
+    left top;
   background-size:
     cover,
-    100% auto;
+    cover,
+    auto 100%;
   background-repeat: no-repeat;
+}
+
+.error-404 .container {
+  position: relative;
+  z-index: 1;
 }
 
 .error-404 h1 {
