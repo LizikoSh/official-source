@@ -637,18 +637,28 @@ h3 {
 
 .error-404 {
   position: relative;
-  min-height: 65vh;
+  min-height: clamp(440px, 52vh, 520px);
   display: grid;
   place-items: center;
+  padding: clamp(34px, 5vw, 58px) 0;
   overflow: hidden;
   color: #fff;
-  background:
-    linear-gradient(rgba(6, 23, 44, 0.74), rgba(6, 23, 44, 0.74)),
-    url("images/official-source-404.webp") center / cover no-repeat;
+  background-color: var(--navy-950);
+  background-image:
+    linear-gradient(rgba(6, 23, 44, 0.76), rgba(6, 23, 44, 0.76)),
+    url("images/official-source-404.webp");
+  background-position:
+    center,
+    left center;
+  background-size:
+    cover,
+    auto 100%;
+  background-repeat: no-repeat;
 }
 
 .error-404 h1 {
   color: #fff;
+  font-size: clamp(35px, 6vw, 62px) !important;
 }
 
 .error-404 .eyebrow {
