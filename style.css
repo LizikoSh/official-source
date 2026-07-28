@@ -649,10 +649,10 @@ h3 {
     url("images/official-source-404.webp");
   background-position:
     center,
-    left center;
+    center top;
   background-size:
     cover,
-    auto 100%;
+    100% auto;
   background-repeat: no-repeat;
 }
 
