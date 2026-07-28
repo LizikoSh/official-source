@@ -637,10 +637,10 @@ h3 {
 
 .error-404 {
   position: relative;
-  min-height: clamp(440px, 52vh, 520px);
+  min-height: clamp(390px, calc(100vh - 250px), 500px);
   display: grid;
   place-items: center;
-  padding: clamp(34px, 5vw, 58px) 0;
+  padding: clamp(28px, 4vw, 46px) 0;
   overflow: hidden;
   color: #fff;
   background-color: var(--navy-950);
@@ -677,6 +677,52 @@ h3 {
 .error-404 .btn-dark:hover {
   color: var(--navy-900);
   background: #c8ff83;
+}
+
+body[data-page="404"] .site-footer {
+  padding: 26px 0 14px;
+}
+
+body[data-page="404"] .site-footer .brand {
+  gap: 10px;
+  font-size: 20px;
+}
+
+body[data-page="404"] .site-footer .brand-shield {
+  width: 31px;
+  height: 36px;
+}
+
+body[data-page="404"] .site-footer .brand-shield span {
+  font-size: 16px;
+}
+
+body[data-page="404"] .footer-grid {
+  align-items: start;
+  gap: 24px;
+}
+
+body[data-page="404"] .footer-about {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+body[data-page="404"] .footer-grid h2 {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+body[data-page="404"] .footer-grid a {
+  margin: 4px 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+body[data-page="404"] .footer-bottom {
+  margin-top: 18px;
+  padding-top: 10px;
+  font-size: 11px;
 }
 
 .home-surface {
