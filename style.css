@@ -635,6 +635,40 @@ h3 {
   background: var(--surface-alt);
 }
 
+.error-404 {
+  position: relative;
+  min-height: 65vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #fff;
+  background:
+    linear-gradient(rgba(6, 23, 44, 0.74), rgba(6, 23, 44, 0.74)),
+    url("images/official-source-404.webp") center / cover no-repeat;
+}
+
+.error-404 h1 {
+  color: #fff;
+}
+
+.error-404 .eyebrow {
+  color: var(--lime);
+}
+
+.error-404 p {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+.error-404 .btn-dark {
+  color: var(--navy-900);
+  background: var(--lime);
+}
+
+.error-404 .btn-dark:hover {
+  color: var(--navy-900);
+  background: #c8ff83;
+}
+
 .home-surface {
   background: var(--surface-alt);
 }
